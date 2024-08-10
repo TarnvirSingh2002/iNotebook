@@ -6,7 +6,8 @@ const {body, validationResult}= require ('express-validator');
 const bcrypt=require('bcryptjs');
 
 const jwt= require('jsonwebtoken');
-JWT_SECRET='Tarnvirsingh213'
+
+const JWT_SECRET=process.env.SECRET_PIN
 
 const fetchUser=require("../middleware/fetchUser");
 //Create a user using:POST"/api/auth/binga"
@@ -77,6 +78,7 @@ router.post('/login',[
         id:user.id
       }
     }
+    console.log(JWT_SECRET);
     const autherToken=jwt.sign(data, JWT_SECRET);
     success=true;
     res.json({success, autherToken});

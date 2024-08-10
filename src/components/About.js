@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 function About() {
-  const history = useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('token')){
+  // const history = useNavigate();
+  // useEffect(() => {
+  //   if(localStorage.getItem('token')){
+  //   }
+  //   else{
+  //     history('/Login');
+  //   }
+  // }, [])
+
+  if(window.localStorage.getItem('token')){
     }
     else{
-      history('/Login');
+      return <Navigate to='/Login'/>
     }
-  }, [])
+
   return (
     <div>
       <h1>Welcome to About page</h1>
